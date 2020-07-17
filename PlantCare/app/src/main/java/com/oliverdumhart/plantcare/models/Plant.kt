@@ -1,5 +1,6 @@
 package com.oliverdumhart.plantcare.models
 
+import android.graphics.Bitmap
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
@@ -11,5 +12,6 @@ class Plant (
     var fertilizerNeeds: String = "",
     var sunlight: String = "",
     var repotting: String = "",
-    var generalInformation: String = ""
+    var generalInformation: String = "",
+    var picture: Bitmap? = null
 ): Parcelable

@@ -1,5 +1,6 @@
 package com.oliverdumhart.plantcare.database
 
+import android.graphics.Bitmap
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -12,5 +13,6 @@ class DatabasePlant(
     var fertilizerNeeds: String = "",
     var sunlight: String = "",
     var repotting: String = "",
-    var generalInformation: String = ""
+    var generalInformation: String = "",
+    var picture: ByteArray? = null
 )

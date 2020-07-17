@@ -1,6 +1,7 @@
 package com.oliverdumhart.plantcare
 
 import android.app.Application
+import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,6 +22,9 @@ class PlantInformationViewModel(private val database: PlantDatabase, private val
     private val plantRepository = PlantRepository(database)
 
     val plant: LiveData<Plant>
+    private val _picture = MutableLiveData<Bitmap?>()
+    val picture: LiveData<Bitmap?>
+        get() = _picture
 
     init {
         plant = if (plantId == 0L) {
@@ -30,23 +34,41 @@ class PlantInformationViewModel(private val database: PlantDatabase, private val
         }
     }
 
-    private val _finishedEvent = MutableLiveData<Boolean>()
+    private val _finishedEvent = MutableLiveData<Boolean>(false)
     val finishedEvent: LiveData<Boolean>
         get() = _finishedEvent
 
-    fun finishedEventFinished(){
+    fun finishedEventFinished() {
         _finishedEvent.value = false
     }
 
     fun saveChanges() {
         viewModelScope.launch {
-            plantRepository.insertPlant(plant.value!!)
+            val p = plant.value!!
+            p.picture = picture.value
+            plantRepository.insertPlant(p)
         }
         _finishedEvent.value = true
+    }
+
+    private val _pictureEvent = MutableLiveData<Boolean>(false)
+    val pictureEvent: LiveData<Boolean>
+        get() = _pictureEvent
+
+    fun onPictureClicked() {
+        _pictureEvent.value = true
+    }
+
+    fun pictureEventFinished() {
+        _pictureEvent.value = false
     }
 
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    fun updatePicture(bitmap: Bitmap) {
+        this._picture.value = bitmap
     }
 }

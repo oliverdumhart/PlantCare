@@ -25,7 +25,9 @@
                 android:layout_height="@dimen/plant_picture_height"
                 android:background="@color/colorPrimary"
                 android:contentDescription="@string/content_description_plant_picture"
-                android:src="@drawable/ic_add_a_photo" />
+                android:onClick="@{() -> viewModel.onPictureClicked()}"
+                android:src="@drawable/ic_add_a_photo"
+                app:picture="@{viewModel.picture}"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
