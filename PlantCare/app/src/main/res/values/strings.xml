@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">PlantCare</string>
+    <string name="add_plant">Pflanze hinfzufügen</string>
+    <string name="title_activity_plant">ScrollingActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_water_needs">Water needs</string>
+    <string name="hint_fertilizer_needs">Fertilizer needs</string>
+    <string name="hint_sunlight">Sunlight</string>
+    <string name="hint_repotting">Repotting</string>
+    <string name="hint_general_information">General information</string>
+    <string name="label_information">Information</string>
+    <string name="sublabel_information">Water needs, Fertilizer needs,...</string>
+    <string name="content_description_information_icon">Information icon</string>
+    <string name="content_description_plant_picture">Plant picture</string>
 </resources>
