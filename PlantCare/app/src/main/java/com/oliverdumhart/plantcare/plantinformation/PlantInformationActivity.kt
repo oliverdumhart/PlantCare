@@ -1,4 +1,4 @@
-package com.oliverdumhart.plantcare
+package com.oliverdumhart.plantcare.plantinformation
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -10,10 +10,9 @@ import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
+import com.oliverdumhart.plantcare.R
 import com.oliverdumhart.plantcare.database.PlantDatabase
 import com.oliverdumhart.plantcare.databinding.ActivityPlantInformationBinding
-import com.oliverdumhart.plantcare.models.Plant
 
 class PlantInformationActivity : AppCompatActivity() {
 
@@ -28,11 +27,18 @@ class PlantInformationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_plant_information)
 
+        actionBar?.setHomeButtonEnabled(true)
+
         val plantId = intent.getLongExtra(PLANT_ID, 0L)
 
         val database = PlantDatabase.getInstance(this)
         viewModel =
-            ViewModelProvider(this, PlantInformationViewModelFactory(database, plantId)).get(
+            ViewModelProvider(this,
+                PlantInformationViewModelFactory(
+                    database,
+                    plantId
+                )
+            ).get(
                 PlantInformationViewModel::class.java
             )
 
@@ -59,7 +65,6 @@ class PlantInformationActivity : AppCompatActivity() {
     }
 
     private fun takePicture() {
-        //TODO: permission request
         //TODO: Reuqest code
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { intent ->
             intent.resolveActivity(packageManager)?.also {

@@ -1,6 +1,5 @@
 package com.oliverdumhart.plantcare.database
 
-import android.graphics.Bitmap
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 

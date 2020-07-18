@@ -1,4 +1,4 @@
-package com.oliverdumhart.plantcare
+package com.oliverdumhart.plantcare.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,10 +8,13 @@ import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
+import com.oliverdumhart.plantcare.*
 import com.oliverdumhart.plantcare.database.PlantDatabase
 import com.oliverdumhart.plantcare.models.Plant
-import com.oliverdumhart.plantcare.plantlist.PlantClickListener
-import com.oliverdumhart.plantcare.plantlist.PlantListAdapter
+import com.oliverdumhart.plantcare.main.plantlist.PlantClickListener
+import com.oliverdumhart.plantcare.main.plantlist.PlantListAdapter
+import com.oliverdumhart.plantcare.plantinformation.PlantInformationActivity
+import com.oliverdumhart.plantcare.plantoverview.PlantActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,7 +35,9 @@ class MainActivity : AppCompatActivity() {
         val database = PlantDatabase.getInstance(this)
 
         viewModel =
-            ViewModelProvider(this, MainViewModelFactory(database)).get(MainViewModel::class.java)
+            ViewModelProvider(this,
+                MainViewModelFactory(database)
+            ).get(MainViewModel::class.java)
 
         viewModel.plants.observe(this, Observer {
             adapter.submitList(it)

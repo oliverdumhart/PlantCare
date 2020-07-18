@@ -1,14 +1,15 @@
-package com.oliverdumhart.plantcare
+package com.oliverdumhart.plantcare.plantoverview
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.oliverdumhart.plantcare.database.PlantDatabase
+import com.oliverdumhart.plantcare.models.Plant
 
-class MainViewModelFactory(val database: PlantDatabase) : ViewModelProvider.Factory {
+class PlantViewModelFactory(private val plant: Plant) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(PlantViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return MainViewModel(database) as T
+            return PlantViewModel(plant) as T
         }
         throw IllegalArgumentException("Unable to construct viewmodel")
     }

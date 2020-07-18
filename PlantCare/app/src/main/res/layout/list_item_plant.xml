@@ -9,7 +9,7 @@
             type="com.oliverdumhart.plantcare.models.Plant" />
         <variable
             name="clickListener"
-            type="com.oliverdumhart.plantcare.plantlist.PlantClickListener" />
+            type="com.oliverdumhart.plantcare.main.plantlist.PlantClickListener" />
     </data>
 
     <androidx.cardview.widget.CardView

@@ -1,4 +1,4 @@
-package com.oliverdumhart.plantcare.plantlist
+package com.oliverdumhart.plantcare.main.plantlist
 
 import androidx.lifecycle.ViewModel
 

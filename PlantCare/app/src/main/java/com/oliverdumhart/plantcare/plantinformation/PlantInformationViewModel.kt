@@ -1,4 +1,4 @@
-package com.oliverdumhart.plantcare
+package com.oliverdumhart.plantcare.plantinformation
 
 import android.app.Application
 import android.graphics.Bitmap
@@ -32,43 +32,44 @@ class PlantInformationViewModel(private val database: PlantDatabase, private val
         } else {
             plantRepository.getPlantById(plantId)
         }
+        _picture.value = plant.value?.picture
     }
 
-    private val _finishedEvent = MutableLiveData<Boolean>(false)
-    val finishedEvent: LiveData<Boolean>
+        private val _finishedEvent = MutableLiveData<Boolean>(false)
+        val finishedEvent: LiveData<Boolean>
         get() = _finishedEvent
 
-    fun finishedEventFinished() {
-        _finishedEvent.value = false
-    }
-
-    fun saveChanges() {
-        viewModelScope.launch {
-            val p = plant.value!!
-            p.picture = picture.value
-            plantRepository.insertPlant(p)
+        fun finishedEventFinished() {
+            _finishedEvent.value = false
         }
-        _finishedEvent.value = true
-    }
 
-    private val _pictureEvent = MutableLiveData<Boolean>(false)
-    val pictureEvent: LiveData<Boolean>
+        fun saveChanges() {
+            viewModelScope.launch {
+                val p = plant.value!!
+                p.picture = picture.value
+                plantRepository.insertPlant(p)
+            }
+            _finishedEvent.value = true
+        }
+
+        private val _pictureEvent = MutableLiveData<Boolean>(false)
+        val pictureEvent: LiveData<Boolean>
         get() = _pictureEvent
 
-    fun onPictureClicked() {
-        _pictureEvent.value = true
-    }
+        fun onPictureClicked() {
+            _pictureEvent.value = true
+        }
 
-    fun pictureEventFinished() {
-        _pictureEvent.value = false
-    }
+        fun pictureEventFinished() {
+            _pictureEvent.value = false
+        }
 
-    override fun onCleared() {
-        super.onCleared()
-        viewModelJob.cancel()
-    }
+        override fun onCleared() {
+            super.onCleared()
+            viewModelJob.cancel()
+        }
 
-    fun updatePicture(bitmap: Bitmap) {
-        this._picture.value = bitmap
+        fun updatePicture(bitmap: Bitmap) {
+            this._picture.value = bitmap
+        }
     }
-}

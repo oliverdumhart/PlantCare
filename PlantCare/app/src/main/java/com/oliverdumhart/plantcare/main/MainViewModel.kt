@@ -1,4 +1,4 @@
-package com.oliverdumhart.plantcare
+package com.oliverdumhart.plantcare.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

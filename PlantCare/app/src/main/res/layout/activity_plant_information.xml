@@ -7,13 +7,13 @@
 
         <variable
             name="viewModel"
-            type="com.oliverdumhart.plantcare.PlantInformationViewModel" />
+            type="com.oliverdumhart.plantcare.plantinformation.PlantInformationViewModel" />
     </data>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".PlantInformationActivity">
+        tools:context=".plantinformation.PlantInformationActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,7 +39,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
                     android:text="@={viewModel.plant.name}"
+                    android:imeOptions="actionNext"
                     tools:text="Berta" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -54,6 +56,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
                     android:text="@={viewModel.plant.waterNeeds}"
                     tools:text="Berta" />
 
@@ -69,6 +72,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
                     android:text="@={viewModel.plant.fertilizerNeeds}"
                     tools:text="Berta" />
 
@@ -83,6 +87,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
+                    android:imeOptions="actionNext"
                     android:layout_height="wrap_content"
                     android:text="@={viewModel.plant.sunlight}"
                     tools:text="Berta" />
@@ -99,6 +104,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
                     android:text="@={viewModel.plant.repotting}"
                     tools:text="Berta" />
 
@@ -115,6 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
+                    android:imeOptions="actionDone"
                     android:lines="8"
                     android:text="@={viewModel.plant.generalInformation}"
                     tools:text="Berta" />
